@@ -4,9 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        l = len(nums)
-        for i in range(l):
-            for j in range(l):
-                if nums[i] < nums[j]:
-                    nums[i],nums[j] = nums[j],nums[i]
+        blue = len(nums) - 1
+        red = white = 0
+        while(white <= blue):
+            if nums[white] == 0:
+                nums[white],nums[red] = nums[red], nums[white]
+                red += 1
+                white += 1
+            elif nums[white] == 1:
+                white+=1
+            else:
+                nums[white],nums[blue] = nums[blue],nums[white]
+                blue-=1
         
